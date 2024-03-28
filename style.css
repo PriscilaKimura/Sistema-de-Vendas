@@ -1,0 +1,164 @@
+body {
+  background-color: #f2f2f2;
+  /* Fundo cinza claro */
+  font-family: "Montserrat", sans-serif;
+}
+
+
+h1 {
+  text-align: center;
+}
+/* Formulários */
+.form-container {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #003037
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin-top: 5px;
+}
+
+input:hover{
+
+    border: solid 1px #003037;
+}
+
+#pedido-total {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+
+#vendas-section {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#vendas-section h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.venda-info {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.venda-info:last-child {
+  border-bottom: none;
+  /* Remover a borda inferior da última venda */
+}
+
+.venda-info h3 {
+  margin-bottom: 10px;
+}
+
+.venda-info p {
+  margin: 5px 0;
+}
+
+.venda-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.venda-info ul li {
+  margin-bottom: 5px;
+}
+
+#lista-vendas {
+  margin-top: 10px;
+}
+
+body {
+  display: flex;
+  background: #eaedee;
+}
+
+
+.container {
+
+  width: 15%;
+  height: 97vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content:space-between ;
+  border: solid 1px #1212;
+}
+
+button {
+  width: 180px;
+  height: 42px;
+  margin-top: 20px;
+  background: #1c5057;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #377077;
+  scale: 1.1;
+}
+
+h1 {
+  color: #003037;
+}
+
+h2{
+  color: #003037
+}
+
+.form-container {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+
+table{
+  width: 100%;
+  text-align: center;
+}
+
+th{
+  font-size: 20px;
+}
+
+.name{
+  text-align: center;
+  width: 220px;
+  font-weight: bold;
+  color: #706969;
+}

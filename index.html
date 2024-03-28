@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Vendas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="side-bar">
+            <h1>Sistema de Vendas</h1>
+            <button onclick="toggleForm(event, 'cliente-form')">Cliente</button>
+            <button onclick="toggleForm(event, 'produto-form')">Produto</button>
+            <button onclick="toggleForm(event, 'pedido-form')">Pedido</button>
+            <button onclick="toggleForm(event, 'vendas-section');mostrarFormularioVendas()">Vendas</button>
+        </div>
+        <p class="name">
+            Desenvolvido por Priscila Kimura
+        </p>
+    </div>
+
+        <!-- Form de Cadastro de Cliente -->
+        <div id="cliente-form" class="form-container" onsubmit="return cadastrarCliente(event)">
+            <h2>Cadastrar Cliente</h2>
+            <form id="form-cliente">
+                <div class="form-group">
+                    <label for="cliente-id">ID do Cliente:</label>
+                    <input type="text" id="cliente-id" name="cliente-id">
+                </div>
+                <div class="form-group">
+                    <label for="cliente-nome">Nome do Cliente:</label>
+                    <input type="text" id="cliente-nome" name="cliente-nome">
+                </div>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <button onclick="toggleForm(event, 'produto-form')">Próxima Etapa</button>
+        </div>
+
+        <!-- Form de Cadastro de Produto -->
+        <div id="produto-form" class="form-container" style="display: none">
+        <h2>Cadastrar Produto</h2>
+        <form id="form-produto" onsubmit="return cadastrarProduto(event)">
+        <div class="form-group">
+            <label for="produto-id">ID do Produto:</label>
+                <input type="text" id="produto-id" name="produto-id">
+            </div>
+            <div class="form-group">
+                <label for="produto-nome">Nome do Produto:</label>
+                <input type="text" id="produto-nome" name="produto-nome">
+            </div>
+            <div class="form-group">
+                <label for="produto-preco">Preço de Venda:</label>
+                <input type="text" id="produto-preco" name="produto-preco">
+            </div>
+            <button type="submit" onclick="cadastrarProduto()">Cadastrar</button>
+        </form>
+        <button onclick="mostrarFormularioPedido()">Próxima Etapa</button>
+    </div>
+
+        <!-- Form Cadastro de Pedido -->
+        <div id="pedido-form" class="form-container" style="display: none" onsubmit="return cadastrarPedido(event)" >
+            <h2>Cadastrar Pedido</h2>
+            <form id="form-pedido">
+                <div class="form-group">
+                    <label for="cliente-selecionado">Selecione um Cliente:</label>
+                    <select id="cliente-selecionado" name="cliente-selecionado">
+                        <!-- clientes cadastrados serão preenchidas dinamicamente -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="produto-id-pedido">Adicione um Produto:</label>
+                    <input type="text" id="produto-id-pedido" name="produto-id-pedido" placeholder="Digite o ID do produto">
+                </div>
+                <div class="form-group">
+                    <label for="quantidade">Quantidade desejada:</label>
+                    <input type="number" id="quantidade" name="quantidade" min="1">
+                </div>
+                <button>Adicionar Pedido</button>
+            </form>
+            <button onclick="toggleForm(event, 'vendas-section');mostrarFormularioVendas()">Próxima Etapa</button>
+        </div>
+
+        <!-- Seção de Apresentação de Vendas -->
+        <div id="vendas-section" class="form-container" style="display: none">
+            <h2>Lista de Vendas</h2>
+            <div id="lista-vendas">
+<!-- Tabela para exibir as vendas -->
+
+<table id="tabela-vendas" >
+<thead>
+    <tr>
+    <th>Cliente</th>
+    <th>Produtos</th>
+    <th>Valor Total</th>
+    </tr>
+</thead>
+<tbody>
+    <!-- Linhas serão inseridas dinamicamente pelo JavaScript -->
+</tbody>
+</table>
+<!-- As informações das vendas serão preenchidas dinamicamente aqui -->
+</div>
+</div>
+
+    <script src="script.js"></script>
+    <script>
+        window.onload = function () {
+            preencherSelectClientes();
+        };
+    </script>
+</body>
+</html>
