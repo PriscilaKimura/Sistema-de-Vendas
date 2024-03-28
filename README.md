@@ -9,7 +9,7 @@ O Sistema de Vendas é uma aplicação web simples para gerenciar clientes, prod
 1. **Cadastrar Cliente:** Permite ao usuário inserir o ID e o nome de um cliente.
 2. **Cadastrar Produto:** Permite ao usuário inserir o ID, nome e preço de venda de um produto.
 3. **Cadastrar Pedido:** Permite ao usuário selecionar um cliente cadastrado e adicionar produtos ao pedido, calculando automaticamente o valor total.
-4. **Apresentar Todas as Vendas:** Exibe todas as vendas realizadas até o momento, incluindo informações do cliente, produtos comprados e o valor total de cada venda.
+4. **Vendas:** Exibe todas as vendas realizadas até o momento, incluindo informações do cliente, produtos comprados e o valor total de cada venda.
 
 ## Armazenamento Local (LocalStorage)
 
