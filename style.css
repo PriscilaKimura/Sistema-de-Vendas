@@ -135,19 +135,13 @@ button {
 
 .form-container {
   width: 100%;
-  max-width: 56rem;
-  min-height: 28rem;
+  flex: 1;
+  min-height: calc(100vh - 11rem);
   padding: 1.75rem 1.75rem 2rem;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
   background: var(--surface);
   box-shadow: 0 10px 30px rgba(15, 26, 34, 0.04);
-}
-
-#vendas-section {
-  max-width: none;
-  flex: 1;
-  min-height: calc(100vh - 11rem);
 }
 
 #cliente-form form,
@@ -156,7 +150,7 @@ button {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem 1.25rem;
-  max-width: 44rem;
+  width: min(100%, 48rem);
 }
 
 #cliente-form .form-group,
