@@ -65,6 +65,10 @@
             <p class="stat-label">Pedidos</p>
             <p class="stat-value" id="stat-pedidos">0</p>
           </article>
+          <article class="stat-card">
+            <p class="stat-label">Faturamento</p>
+            <p class="stat-value" id="stat-faturamento">R$ 0,00</p>
+          </article>
         </section>
 
         <div id="cliente-form" class="form-container" onsubmit="return cadastrarCliente(event)">
@@ -183,19 +187,25 @@
           </div>
         </div>
 
-        <div id="vendas-section" class="form-container" style="display: none">
-          <h2>Lista de Vendas</h2>
-          <div id="lista-vendas" class="table-wrap">
-            <table id="tabela-vendas">
-              <thead>
-                <tr>
-                  <th>Cliente</th>
-                  <th>Produtos</th>
-                  <th>Valor total</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+        <div id="vendas-section" class="form-container form-container--fill" style="display: none">
+          <div class="panel-grid panel-grid--vendas">
+            <div>
+              <h2>Lista de Vendas</h2>
+              <div id="lista-vendas" class="table-wrap">
+                <p class="table-empty">
+                  Nenhuma venda registrada ainda. Cadastre cliente, produto e pedido para ver a lista aqui.
+                </p>
+              </div>
+            </div>
+            <aside class="panel-aside">
+              <p class="panel-aside-title">Acompanhe</p>
+              <p>Aqui ficam os pedidos finalizados com cliente, itens e valor total.</p>
+              <ul>
+                <li>Os totais atualizam no resumo acima</li>
+                <li>Os dados ficam salvos neste navegador</li>
+                <li>Use o menu para voltar e cadastrar mais</li>
+              </ul>
+            </aside>
           </div>
         </div>
       </main>
@@ -207,9 +217,14 @@
         var clientes = JSON.parse(localStorage.getItem('clientes') || '[]')
         var produtos = JSON.parse(localStorage.getItem('produtos') || '[]')
         var pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]')
+        var total = pedidos.reduce(function (soma, pedido) {
+          return soma + (Number(pedido.valorTotal) || 0)
+        }, 0)
         document.getElementById('stat-clientes').textContent = clientes.length
         document.getElementById('stat-produtos').textContent = produtos.length
         document.getElementById('stat-pedidos').textContent = pedidos.length
+        document.getElementById('stat-faturamento').textContent =
+          'R$ ' + total.toFixed(2).replace('.', ',')
       }
 
       window.onload = function () {

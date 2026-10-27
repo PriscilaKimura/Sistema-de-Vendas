@@ -247,4 +247,8 @@ function toggleForm(event, formId) {
   if (formId == 'pedido-form'){
     preencherSelectClientes()
   }
+
+  if (formId === 'vendas-section') {
+    mostrarTodasAsVendas()
+  }
 }

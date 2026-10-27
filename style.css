@@ -135,7 +135,7 @@ button {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 1.25rem;
 }
@@ -166,6 +166,7 @@ button {
 
 .form-container {
   width: 100%;
+  flex: 1;
   padding: 1.75rem;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
@@ -173,8 +174,10 @@ button {
   box-shadow: 0 10px 30px rgba(15, 26, 34, 0.04);
 }
 
-#vendas-section {
-  min-height: 22rem;
+.form-container--fill {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .panel-grid {
@@ -182,6 +185,11 @@ button {
   grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.85fr);
   gap: 1.75rem;
   align-items: stretch;
+}
+
+.panel-grid--vendas {
+  flex: 1;
+  min-height: 22rem;
 }
 
 .panel-aside {
@@ -310,7 +318,8 @@ select:focus {
 
 .table-wrap {
   overflow-x: auto;
-  min-height: 16rem;
+  min-height: 18rem;
+  height: 100%;
 }
 
 table {
@@ -334,13 +343,18 @@ th {
 }
 
 .table-empty {
-  margin: 2.5rem 0 0;
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 18rem;
+  padding: 2.5rem 2rem;
   border: 1px dashed var(--line);
   border-radius: 0.35rem;
   text-align: center;
   color: var(--muted);
   background: #f7fafb;
+  line-height: 1.6;
 }
 
 @media (max-width: 800px) {
@@ -369,7 +383,7 @@ th {
   }
 
   .stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .panel-grid {
