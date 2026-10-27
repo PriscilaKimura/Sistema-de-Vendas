@@ -135,27 +135,29 @@ button {
 
 .form-container {
   width: 100%;
-  flex: 1;
-  min-height: calc(100vh - 11rem);
-  padding: 1.75rem 1.75rem 2rem;
+  padding: 1.75rem;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
   background: var(--surface);
   box-shadow: 0 10px 30px rgba(15, 26, 34, 0.04);
 }
 
+#vendas-section {
+  min-height: 22rem;
+}
+
 .panel-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.85fr);
   gap: 1.75rem;
-  align-items: start;
-  height: 100%;
+  align-items: stretch;
 }
 
 .panel-aside {
-  height: 100%;
-  min-height: 18rem;
-  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
   background: linear-gradient(180deg, #f7fbfc 0%, #eef5f7 100%);
