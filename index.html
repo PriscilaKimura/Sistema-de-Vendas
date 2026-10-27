@@ -53,80 +53,119 @@
         </header>
 
         <div id="cliente-form" class="form-container" onsubmit="return cadastrarCliente(event)">
-          <h2>Cadastrar Cliente</h2>
-          <form id="form-cliente">
-            <div class="form-group">
-              <label for="cliente-id">ID do Cliente</label>
-              <input type="text" id="cliente-id" name="cliente-id" placeholder="Ex.: C001" />
+          <div class="panel-grid">
+            <div>
+              <h2>Cadastrar Cliente</h2>
+              <form id="form-cliente">
+                <div class="form-group">
+                  <label for="cliente-id">ID do Cliente</label>
+                  <input type="text" id="cliente-id" name="cliente-id" placeholder="Ex.: C001" />
+                </div>
+                <div class="form-group">
+                  <label for="cliente-nome">Nome do Cliente</label>
+                  <input type="text" id="cliente-nome" name="cliente-nome" placeholder="Nome completo" />
+                </div>
+                <div class="actions">
+                  <button type="submit">Cadastrar</button>
+                  <button type="button" class="btn-secondary" onclick="toggleForm(event, 'produto-form')">
+                    Próxima etapa
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="cliente-nome">Nome do Cliente</label>
-              <input type="text" id="cliente-nome" name="cliente-nome" placeholder="Nome completo" />
-            </div>
-            <div class="actions">
-              <button type="submit">Cadastrar</button>
-              <button type="button" class="btn-secondary" onclick="toggleForm(event, 'produto-form')">
-                Próxima etapa
-              </button>
-            </div>
-          </form>
+            <aside class="panel-aside">
+              <p class="panel-aside-title">Nesta etapa</p>
+              <p>Registre a base de clientes que vão aparecer nos pedidos.</p>
+              <ul>
+                <li>Use um ID único para cada cliente</li>
+                <li>Depois cadastre os produtos</li>
+                <li>Os dados ficam salvos neste navegador</li>
+              </ul>
+            </aside>
+          </div>
         </div>
 
         <div id="produto-form" class="form-container" style="display: none">
-          <h2>Cadastrar Produto</h2>
-          <form id="form-produto" onsubmit="return cadastrarProduto(event)">
-            <div class="form-group">
-              <label for="produto-id">ID do Produto</label>
-              <input type="text" id="produto-id" name="produto-id" placeholder="Ex.: P001" />
+          <div class="panel-grid">
+            <div>
+              <h2>Cadastrar Produto</h2>
+              <form id="form-produto" onsubmit="return cadastrarProduto(event)">
+                <div class="form-group">
+                  <label for="produto-id">ID do Produto</label>
+                  <input type="text" id="produto-id" name="produto-id" placeholder="Ex.: P001" />
+                </div>
+                <div class="form-group">
+                  <label for="produto-nome">Nome do Produto</label>
+                  <input type="text" id="produto-nome" name="produto-nome" placeholder="Nome do item" />
+                </div>
+                <div class="form-group">
+                  <label for="produto-preco">Preço de Venda</label>
+                  <input type="text" id="produto-preco" name="produto-preco" placeholder="Ex.: 49.90" />
+                </div>
+                <div class="actions">
+                  <button type="submit" onclick="cadastrarProduto()">Cadastrar</button>
+                  <button type="button" class="btn-secondary" onclick="mostrarFormularioPedido()">
+                    Próxima etapa
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="produto-nome">Nome do Produto</label>
-              <input type="text" id="produto-nome" name="produto-nome" placeholder="Nome do item" />
-            </div>
-            <div class="form-group">
-              <label for="produto-preco">Preço de Venda</label>
-              <input type="text" id="produto-preco" name="produto-preco" placeholder="Ex.: 49.90" />
-            </div>
-            <div class="actions">
-              <button type="submit" onclick="cadastrarProduto()">Cadastrar</button>
-              <button type="button" class="btn-secondary" onclick="mostrarFormularioPedido()">
-                Próxima etapa
-              </button>
-            </div>
-          </form>
+            <aside class="panel-aside">
+              <p class="panel-aside-title">Nesta etapa</p>
+              <p>Monte o catálogo com nome e preço para calcular o valor dos pedidos.</p>
+              <ul>
+                <li>Informe o preço em número</li>
+                <li>O ID do produto será usado no pedido</li>
+                <li>Em seguida, registre a venda</li>
+              </ul>
+            </aside>
+          </div>
         </div>
 
         <div id="pedido-form" class="form-container" style="display: none" onsubmit="return cadastrarPedido(event)">
-          <h2>Cadastrar Pedido</h2>
-          <form id="form-pedido">
-            <div class="form-group">
-              <label for="cliente-selecionado">Selecione um Cliente</label>
-              <select id="cliente-selecionado" name="cliente-selecionado"></select>
+          <div class="panel-grid">
+            <div>
+              <h2>Cadastrar Pedido</h2>
+              <form id="form-pedido">
+                <div class="form-group">
+                  <label for="cliente-selecionado">Selecione um Cliente</label>
+                  <select id="cliente-selecionado" name="cliente-selecionado"></select>
+                </div>
+                <div class="form-group">
+                  <label for="produto-id-pedido">Adicione um Produto</label>
+                  <input
+                    type="text"
+                    id="produto-id-pedido"
+                    name="produto-id-pedido"
+                    placeholder="Digite o ID do produto"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="quantidade">Quantidade desejada</label>
+                  <input type="number" id="quantidade" name="quantidade" min="1" placeholder="1" />
+                </div>
+                <div class="actions">
+                  <button type="submit">Adicionar pedido</button>
+                  <button
+                    type="button"
+                    class="btn-secondary"
+                    onclick="toggleForm(event, 'vendas-section');mostrarFormularioVendas()"
+                  >
+                    Próxima etapa
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="produto-id-pedido">Adicione um Produto</label>
-              <input
-                type="text"
-                id="produto-id-pedido"
-                name="produto-id-pedido"
-                placeholder="Digite o ID do produto"
-              />
-            </div>
-            <div class="form-group">
-              <label for="quantidade">Quantidade desejada</label>
-              <input type="number" id="quantidade" name="quantidade" min="1" placeholder="1" />
-            </div>
-            <div class="actions">
-              <button type="submit">Adicionar pedido</button>
-              <button
-                type="button"
-                class="btn-secondary"
-                onclick="toggleForm(event, 'vendas-section');mostrarFormularioVendas()"
-              >
-                Próxima etapa
-              </button>
-            </div>
-          </form>
+            <aside class="panel-aside">
+              <p class="panel-aside-title">Nesta etapa</p>
+              <p>Una cliente e produto para gerar o pedido e o valor total.</p>
+              <ul>
+                <li>Escolha um cliente já cadastrado</li>
+                <li>Informe o ID do produto</li>
+                <li>A lista de vendas mostra o resultado</li>
+              </ul>
+            </aside>
+          </div>
         </div>
 
         <div id="vendas-section" class="form-container" style="display: none">
