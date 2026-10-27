@@ -16,6 +16,7 @@
 html,
 body {
   margin: 0;
+  height: 100%;
   min-height: 100%;
 }
 
@@ -38,6 +39,7 @@ h2 {
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
   min-height: 100vh;
+  height: 100%;
 }
 
 .sidebar {
@@ -110,6 +112,8 @@ button {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  min-height: 0;
+  overflow: auto;
   padding: 2rem 2.25rem 2.5rem;
 }
 
