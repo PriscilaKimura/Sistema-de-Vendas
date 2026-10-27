@@ -52,6 +52,21 @@
           </p>
         </header>
 
+        <section class="stats" aria-label="Resumo">
+          <article class="stat-card">
+            <p class="stat-label">Clientes</p>
+            <p class="stat-value" id="stat-clientes">0</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Produtos</p>
+            <p class="stat-value" id="stat-produtos">0</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-label">Pedidos</p>
+            <p class="stat-value" id="stat-pedidos">0</p>
+          </article>
+        </section>
+
         <div id="cliente-form" class="form-container" onsubmit="return cadastrarCliente(event)">
           <div class="panel-grid">
             <div>
@@ -188,8 +203,18 @@
 
     <script src="script.js"></script>
     <script>
+      function atualizarResumo() {
+        var clientes = JSON.parse(localStorage.getItem('clientes') || '[]')
+        var produtos = JSON.parse(localStorage.getItem('produtos') || '[]')
+        var pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]')
+        document.getElementById('stat-clientes').textContent = clientes.length
+        document.getElementById('stat-produtos').textContent = produtos.length
+        document.getElementById('stat-pedidos').textContent = pedidos.length
+      }
+
       window.onload = function () {
         preencherSelectClientes()
+        atualizarResumo()
       }
 
       document.querySelectorAll('.nav-btn').forEach(function (button) {
@@ -198,6 +223,14 @@
             item.classList.remove('is-active')
           })
           button.classList.add('is-active')
+        })
+      })
+
+      ;['form-cliente', 'form-produto', 'form-pedido'].forEach(function (id) {
+        var form = document.getElementById(id)
+        if (!form) return
+        form.addEventListener('submit', function () {
+          setTimeout(atualizarResumo, 0)
         })
       })
     </script>
