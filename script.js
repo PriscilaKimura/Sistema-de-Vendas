@@ -171,18 +171,27 @@ function mostrarFormularioVendas() {
 // Função para mostrar todas as vendas
 function mostrarTodasAsVendas() {
   let vendas = JSON.parse(localStorage.getItem("pedidos")) || [];
+  let lista = document.getElementById("lista-vendas");
+
+  if (!vendas.length) {
+    lista.innerHTML =
+      '<p class="table-empty">Nenhuma venda registrada ainda. Cadastre cliente, produto e pedido para ver a lista aqui.</p>';
+    return;
+  }
+
+  lista.innerHTML =
+    '<table id="tabela-vendas"><thead><tr><th>Cliente</th><th>Produtos</th><th>Valor total</th></tr></thead><tbody></tbody></table>';
 
   let tabelaVendas = document.getElementById("tabela-vendas");
-  tabelaVendas.innerHTML = "<thead><tr><th>Cliente</th> <th>Produtos</th><th>Valor Total</th></tr> </thead> <tbody> </tbody>";
 
-  vendas.forEach((venda, index) => {
+  vendas.forEach((venda) => {
     let row = tabelaVendas.insertRow();
     let cellCliente = row.insertCell(0);
     let cellProdutos = row.insertCell(1);
     let cellValorTotal = row.insertCell(2);
 
     cellCliente.textContent = venda.clienteId;
-    cellProdutos.textContent = venda.produtos.map(produto => produto.nome).join(", ");
+    cellProdutos.textContent = venda.produtos.map((produto) => produto.nome).join(", ");
     cellValorTotal.textContent = venda.valorTotal.toFixed(2);
   });
 }

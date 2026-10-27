@@ -107,12 +107,15 @@ button {
 }
 
 .main {
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 2rem 2.25rem 2.5rem;
 }
 
 .main-header {
   margin-bottom: 1.5rem;
-  max-width: 40rem;
+  max-width: 48rem;
 }
 
 .eyebrow {
@@ -131,12 +134,41 @@ button {
 }
 
 .form-container {
-  width: min(100%, 36rem);
-  padding: 1.5rem;
+  width: 100%;
+  max-width: 56rem;
+  min-height: 28rem;
+  padding: 1.75rem 1.75rem 2rem;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
   background: var(--surface);
   box-shadow: 0 10px 30px rgba(15, 26, 34, 0.04);
+}
+
+#vendas-section {
+  max-width: none;
+  flex: 1;
+  min-height: calc(100vh - 11rem);
+}
+
+#cliente-form form,
+#produto-form form,
+#pedido-form form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  max-width: 44rem;
+}
+
+#cliente-form .form-group,
+#produto-form .form-group,
+#pedido-form .form-group {
+  margin-bottom: 0;
+}
+
+#cliente-form .actions,
+#produto-form .actions,
+#pedido-form .actions {
+  grid-column: 1 / -1;
 }
 
 .form-container h2 {
@@ -212,6 +244,7 @@ select:focus {
 
 .table-wrap {
   overflow-x: auto;
+  min-height: 16rem;
 }
 
 table {
@@ -222,7 +255,7 @@ table {
 
 th,
 td {
-  padding: 0.85rem 0.5rem;
+  padding: 1rem 0.75rem;
   border-bottom: 1px solid var(--line);
   font-size: 0.95rem;
 }
@@ -232,6 +265,16 @@ th {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.table-empty {
+  margin: 2.5rem 0 0;
+  padding: 2rem;
+  border: 1px dashed var(--line);
+  border-radius: 0.35rem;
+  text-align: center;
+  color: var(--muted);
+  background: #f7fafb;
 }
 
 @media (max-width: 800px) {
@@ -257,5 +300,16 @@ th {
 
   .main {
     padding: 1.25rem;
+  }
+
+  .form-container,
+  #vendas-section {
+    min-height: 0;
+  }
+
+  #cliente-form form,
+  #produto-form form,
+  #pedido-form form {
+    grid-template-columns: 1fr;
   }
 }
